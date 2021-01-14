@@ -25,8 +25,9 @@ import com.netflix.client.config.IClientConfig;
  * and to define a common interface that components that need this can implement and hence be aware of.
  *
  * @author stonse
- * @author awang 
+ * @author awang
  *
+ * 有很多class需要config, 可以实现这个, 这样的话就可以轻易的接收config来初始化了.
  */
 public interface IClientConfigAware {
     interface Factory {

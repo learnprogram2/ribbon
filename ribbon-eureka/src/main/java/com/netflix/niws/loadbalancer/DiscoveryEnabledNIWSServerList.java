@@ -92,12 +92,13 @@ public class DiscoveryEnabledNIWSServerList extends AbstractServerList<Discovery
         this(clientConfig, new LegacyEurekaClientProvider());
     }
 
+    // 传进来eurekaClient
     public DiscoveryEnabledNIWSServerList(String vipAddresses, Provider<EurekaClient> eurekaClientProvider) {
         this(createClientConfig(vipAddresses), eurekaClientProvider);
     }
 
     public DiscoveryEnabledNIWSServerList(IClientConfig clientConfig, Provider<EurekaClient> eurekaClientProvider) {
-        this.eurekaClientProvider = eurekaClientProvider;
+        this.eurekaClientProvider = eurekaClientProvider; // 这个就是eurekaClient
         initWithNiwsConfig(clientConfig);
     }
 
@@ -185,6 +186,7 @@ public class DiscoveryEnabledNIWSServerList extends AbstractServerList<Discovery
                         serverList.add(des);
                     }
                 }
+                // 拿到了就赶紧跳出来, 别再找别的vipServer了
                 if (serverList.size()>0 && prioritizeVipAddressBasedServers){
                     break; // if the current vipAddress has servers, we dont use subsequent vipAddress based servers
                 }

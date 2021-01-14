@@ -18,6 +18,9 @@ import java.util.concurrent.atomic.AtomicBoolean;
  * (refactored and moved here from {@link com.netflix.loadbalancer.DynamicServerListLoadBalancer})
  *
  * @author David Liu
+ *
+ *
+ * 一个定时线程池, 默认30s执行一个action, action就是传进来的动作, 一般是{@link DynamicServerListLoadBalancer#updateAction}
  */
 public class PollingServerListUpdater implements ServerListUpdater {
 
